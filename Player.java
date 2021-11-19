@@ -2,6 +2,8 @@ package com.bridgelabz;
 
 import java.util.ArrayList;
 
+import java.util.ArrayList;
+
 public class Player {
     ArrayList<String> cardList = new ArrayList<>();
     public Player(String firstname) {
@@ -13,11 +15,9 @@ public class Player {
     public void setCardList(String card){
         cardList.add(card);
     }
-    public void getCardList(){
+    public void getCard(){
         for(String position : cardList){
             System.out.print(position+", ");
         }
     }
 }
-
-
