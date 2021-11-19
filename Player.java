@@ -13,11 +13,11 @@ public class Player {
     public void setCardList(String card){
         cardList.add(card);
     }
-    public void getCard(){
-        
+    public void getCardList(){
         for(String position : cardList){
             System.out.print(position+", ");
         }
     }
 }
-© 2021 GitHub, Inc.
+
+

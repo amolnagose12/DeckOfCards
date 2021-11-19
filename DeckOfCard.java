@@ -10,9 +10,7 @@ public class DeckOfCards {
     String[] ranks = {"2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"};
     String[] deck = new String[52];
 
-    /*
-     * uniqueDeckOfCard method is used to initialize the deck with cards
-     */
+    
     public void uniqueDeckOfCard() {
         int count = 0;
         for (int row = 0; row < suits.length; row++) {
@@ -23,9 +21,7 @@ public class DeckOfCards {
 
     }
 
-    /*
-     * add multiple players
-     * */
+    
     public void addPlayers() {
         int numberOfPlayers;
         Scanner sc = new Scanner(System.in);
@@ -42,7 +38,18 @@ public class DeckOfCards {
         }
     }
 
+   
+    public String getDeckOfCards() {
+        int min = 0;
+        int max = cards.size() - 1;
+        int position = (int) (Math.random() * (max - min + 1) + min);
+        System.out.print("\n Size : " + cards.size() + ", position : " + position);
+        String returnValue = cards.get(position);
+        cards.remove(position);
+        return returnValue;
+    }
 
+    
     public void shuffleCards() {
         for (int i = 0; i < cards.size(); i++) {
             int min = 0;
@@ -57,25 +64,17 @@ public class DeckOfCards {
         }
     }
 
-    public String getCards() {
-        int min = 0;
-        int max = cards.size() - 1;
-        int position = (int) (Math.random() * (max - min + 1) + min);
-        System.out.print("\n Size : " + cards.size() + ", position : " + position);
-        String returnValue = cards.get(position);
-        cards.remove(position);
-        return returnValue;
-    }
-
+    
     public void distributeCards() {
         for (int i = 1; i <= 9; i++) {
             for (Player playerObj : players) {
-                playerObj.setCardList(getCards());
+                playerObj.setCardList(getDeckOfCards());
                 shuffleCards();
             }
         }
     }
 
+    
     public void setPlayerSequence() {
         Scanner sc = new Scanner(System.in);
         int playerSize = players.size();
@@ -84,18 +83,20 @@ public class DeckOfCards {
             System.out.print("\n Set player position  " + temp.firstname + " : ");
             int newPosition = sc.nextInt();
             if (newPosition > playerSize || newPosition < 0) {
-                System.out.print("Enter valid option");
+                System.out.print("\n Enter valid position");
                 return;
             }
+
             players.set(i, players.get(newPosition));
             players.set(newPosition, temp);
         }
     }
 
+    
     public void displayCard() {
         for (Player playerObj : players) {
             System.out.print("\ncards of " + playerObj.firstname + " : ");
-            playerObj.getCard();
+            playerObj.getCardList();
             System.out.print("\n ");
         }
     }
