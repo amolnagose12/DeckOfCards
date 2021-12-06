@@ -20,4 +20,3 @@ public class Player {
         }
     }
 }
-© 2021 GitHub, Inc.
